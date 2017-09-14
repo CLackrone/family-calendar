@@ -5,13 +5,14 @@ Category.create([
   {:name => "leisure"}
   ])
 
-@category_count = Category.all.count
-
 Event.create([
-  {:name => "", :time => "", :location => "", :category_id => rand(1..@category_count)},
+  {:name => "church", :time => "Sunday 9:15", :location => "Grace Community", :category_id => 2},
+  {:name => "date night", :time => "Friday 6:00", :location => "Seasons 52", :category_id => 4},
+  {:name => "dance class", :time => "Saturday 11:30", :location => "Studio Dans", :category_id => 1},
+  {:name => "yoga", :time => "Saturday 8:30", :location => "Haven", :category_id => 1},
+  {:name => "Back to school night", :time => "Thursday 6:30", :location => "Fulton Elementary", :category_id => 3}
   ])
 
-#ready
 FamilyMemberEvent.create([
   {:family_member_id => 1, :event_id => 1},
   {:family_member_id => 2, :event_id => 1},
@@ -21,16 +22,15 @@ FamilyMemberEvent.create([
   {:family_member_id => 2, :event_id => 2},
   {:family_member_id => 3, :event_id => 3},
   {:family_member_id => 4, :event_id => 3},
-  {:family_member_id => 1, :event_id => 4}
+  {:family_member_id => 1, :event_id => 4},
+  {:family_member_id => 2, :event_id => 5}
   ])
 
-#ready
 User.create(
   email: Faker::Internet.email,
   password: Faker::Internet.password
   )
 
-#ready
 FamilyMember.create([
   {:name => "Charisa", :age => 36},
   {:name => "Luke", :age => 34},
