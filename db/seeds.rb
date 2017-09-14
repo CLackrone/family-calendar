@@ -11,8 +11,17 @@ Event.create([
   {:name => "", :time => "", :location => "", :category_id => rand(1..@category_count)},
   ])
 
+#ready
 FamilyMemberEvent.create([
-  {:family_member_id => , :event_id => },
+  {:family_member_id => 1, :event_id => 1},
+  {:family_member_id => 2, :event_id => 1},
+  {:family_member_id => 3, :event_id => 1},
+  {:family_member_id => 4, :event_id => 1},
+  {:family_member_id => 1, :event_id => 2},
+  {:family_member_id => 2, :event_id => 2},
+  {:family_member_id => 3, :event_id => 3},
+  {:family_member_id => 4, :event_id => 3},
+  {:family_member_id => 1, :event_id => 4}
   ])
 
 #ready
