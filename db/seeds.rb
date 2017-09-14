@@ -32,8 +32,8 @@ User.create(
   )
 
 FamilyMember.create([
-  {:name => "Charisa", :age => 36},
-  {:name => "Luke", :age => 34},
-  {:name => "Ada", :age => 5},
-  {:name => "Eliza", :age => 2}
+  {:name => "Charisa", :age => 36, :user_id => 1},
+  {:name => "Luke", :age => 34, :user_id => 1},
+  {:name => "Ada", :age => 5, :user_id => 1},
+  {:name => "Eliza", :age => 2, :user_id => 1}
   ])
