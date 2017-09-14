@@ -16,13 +16,15 @@ FamilyMemberEvent.create([
   ])
 
 #ready
-5.times do 
-  User.create(
-    email: Faker::Internet.email,
-    password: Faker::Internet.password
-    )
-end
+User.create(
+  email: Faker::Internet.email,
+  password: Faker::Internet.password
+  )
 
+#ready
 FamilyMember.create([
-  {:name => "", :age =>},
+  {:name => "Charisa", :age => 36},
+  {:name => "Luke", :age => 34},
+  {:name => "Ada", :age => 5},
+  {:name => "Eliza", :age => 2}
   ])
