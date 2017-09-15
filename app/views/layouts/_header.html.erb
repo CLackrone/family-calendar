@@ -1,3 +1,16 @@
-<h1>Welcome to Family Calendar</h1>
+<h1>Family Calendar</h1>
 
-<%= button_to "Sign Up", new_user_registration_path %>
+<%= link_to "Home", root_path %>
+
+<% if !!current_user %>
+  <%= "Signed in as #{current_user.email}" %><br>
+  <%= link_to("Sign out", destroy_user_session_path, :method => 'delete') %>
+<% else %>
+  <li><%= link_to "Sign Up", new_user_registration_path %></li>
+  <li><%= link_to "Sign In", new_user_session_path %></li>
+<% end %>
+
+
+
+
+
