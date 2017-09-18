@@ -7,6 +7,10 @@ class FamilyMembersController < ApplicationController
   end
 
   def new
+    @member = FamilyMember.new
+  end
+
+  def create
   end
 
   def show

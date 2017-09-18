@@ -2,8 +2,14 @@ class EventsController < ApplicationController
 
   before_action :set_event, only: [:show]
 
+  def new
+    @event = Event.new
+  end
+
+  def create
+  end
+
   def index
-    #returning multiples of each event
     @events = current_user.events
   end
 
