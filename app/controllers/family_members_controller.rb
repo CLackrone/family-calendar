@@ -1,9 +1,9 @@
 class FamilyMembersController < ApplicationController
-
+  before_action :authenticate_user!
   before_action :set_member, only: [:show]
 
   def index
-    @members = FamilyMember.all 
+    @members = current_user.family_members
   end
 
   def new
