@@ -1,0 +1,12 @@
+<%= form_for @member do |f| %>
+  <%= f.hidden_field :user_id %>
+
+  <%= f.label :name %>
+  <%= f.text_field :name %><br>
+
+  <%= f.label :age %>
+  <%= f.text_field :age %><br>
+
+  <%= f.submit %>
+
+<% end %>

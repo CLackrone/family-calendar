@@ -1,6 +1,6 @@
 class FamilyMembersController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_member, only: [:show]
+  before_action :set_member, only: [:show, :edit, :update]
 
   def index
     @members = current_user.family_members
@@ -17,6 +17,12 @@ class FamilyMembersController < ApplicationController
   end
 
   def show
+  end
+
+  def edit
+  end
+
+  def update
   end
 
   private
