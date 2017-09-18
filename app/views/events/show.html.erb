@@ -1,6 +1,6 @@
 <%= @event.name %><br>
 <% @event.family_members.each do |f| %>
-  <%= f.name %><br>
+  <%= link_to f.name, family_member_path(f) %><br>
 <% end %>
 <%= @event.time %><br>
 <%= @event.location %><br>
