@@ -1,16 +1,20 @@
-<h1>Family Calendar</h1>
-
-<%= link_to "Home", root_path %><br> 
+<nav class="navbar navbar-light bg-faded">
+  <h1 class="navbar-brand mb-0">Family Calendar</h1>
+<div class="nav-item">
+<%= link_to "Home", root_path %>  | 
 
 <% if !!current_user %>
-  <%= "Signed in as #{current_user.email}" %><br>
+  <%= "Signed in as #{current_user.email}" %>  | 
+  <%= link_to "Events", events_path %>  | 
+  <%= link_to "Family Members", family_members_path %>  | 
   <%= link_to("Sign out", destroy_user_session_path, :method => 'delete') %>
 <% else %>
-  <%= link_to "Sign Up", new_user_registration_path %> | 
+
+  <%= link_to "Sign Up", new_user_registration_path %>  | 
   <%= link_to "Sign In", new_user_session_path %>
+</div>
 <% end %>
 
-
-
+</nav>
 
 
