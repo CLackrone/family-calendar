@@ -3,7 +3,8 @@ class EventsController < ApplicationController
   before_action :set_event, only: [:show]
 
   def index
-    @events = Event.all 
+    #returning multiples of each event
+    @events = current_user.events
   end
 
   def show
