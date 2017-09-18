@@ -1,0 +1,4 @@
+<%= @member.name %><br>
+<% @member.events.each do |e| %>
+  <%= link_to e.name, event_path(e) %><br>
+<% end %>
