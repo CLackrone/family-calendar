@@ -1,0 +1,7 @@
+<%= @event.name %><br>
+<% @event.family_members.each do |f| %>
+  <%= f.name %><br>
+<% end %>
+<%= @event.time %><br>
+<%= @event.location %><br>
+<%= link_to @event.category.name, category_path(@event.category) %>
