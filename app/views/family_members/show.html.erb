@@ -1,4 +1,5 @@
-<%= @member.name %><br>
+<%= @member.name %> - <%= @member.age %><br>
 <% @member.events.each do |e| %>
   <%= link_to e.name, event_path(e) %><br>
 <% end %>
+<%= link_to "Edit Family Member", edit_family_member_path(@member) %>

@@ -23,6 +23,12 @@ class FamilyMembersController < ApplicationController
   end
 
   def update
+    @member.update(member_params)
+    if @member.save
+      redirect_to family_member_path(@member)
+    else
+      render edit_family_member_path
+    end
   end
 
   private
@@ -36,3 +42,5 @@ class FamilyMembersController < ApplicationController
   end
   
 end
+
+
