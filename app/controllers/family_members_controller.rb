@@ -1,6 +1,6 @@
 class FamilyMembersController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_member, only: [:show, :edit, :update]
+  before_action :set_member, only: [:show, :edit, :update, :destroy]
 
   def index
     @members = current_user.family_members
@@ -12,8 +12,11 @@ class FamilyMembersController < ApplicationController
 
   def create
     @member = current_user.family_members.new(member_params)
-    @member.save
-    redirect_to family_member_path(@member)
+    if @member.save
+      redirect_to @member
+    else 
+      redirect_to new_family_member_path
+    end
   end
 
   def show
@@ -25,9 +28,17 @@ class FamilyMembersController < ApplicationController
   def update
     @member.update(member_params)
     if @member.save
-      redirect_to family_member_path(@member)
+      redirect_to @member
     else
       render edit_family_member_path
+    end
+  end
+
+  def destroy
+    if @member.destroy
+      redirect_to family_members_path
+    else
+      render @member 
     end
   end
 
@@ -42,5 +53,6 @@ class FamilyMembersController < ApplicationController
   end
   
 end
+
 
 
