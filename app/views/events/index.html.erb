@@ -1,3 +1,9 @@
-<% @events.uniq.each do |e| %>
-    <%= link_to e.name, event_path(e) %><br>
+<h1>Events</h1>
+
+<% if @events != [] %>
+  <% @events.uniq.each do |e| %>
+      <%= link_to e.name, event_path(e) %><br>
+  <% end %>
+<% else %>
+  <p>You have no events.</p>
 <% end %>

@@ -1,4 +1,10 @@
-<% @members.each do |m| %>
-  <%= link_to m.name, family_member_path(m) %><br>
+<h1>Family Members</h1>
+
+<% if @members != [] %>
+  <% @members.each do |m| %>
+    <%= link_to m.name, family_member_path(m) %><br>
+  <% end %>
+<% else %>
+  <p>You have no family members.</p>
 <% end %>
 <%= link_to "Add Family Member", new_family_member_path %>

@@ -1,11 +1,11 @@
-<% if flash[:notice] %>
-  <div class="notice"><%= flash[:notice] %></div>
-<% end %>
+<h1>Family Members</h1>
 
-<%= @member.name %> - <%= @member.age %><br>
+Name: <%= @member.name %> <br>
+Age: <%= @member.age %><br>
+Events: <br>
 <% @member.events.each do |e| %>
   <%= link_to e.name, event_path(e) %><br>
-<% end %>
+<% end %><br><br>
 <%= link_to "Edit", edit_family_member_path(@member) %> | <%= link_to "Delete", family_member_path(@member), method: :delete %>
 
 
