@@ -1,12 +1,14 @@
 <h1>Family Members</h1>
 
-Name: <%= @member.name %> <br>
-Age: <%= @member.age %><br>
-Events: <br>
-<% @member.events.each do |e| %>
-  <%= link_to e.name, event_path(e) %><br>
-<% end %><br><br>
-<%= link_to "Edit", edit_family_member_path(@member) %> | <%= link_to "Delete", family_member_path(@member), method: :delete %>
-
-
+<% if current_user.id != @member.user_id %>
+  <p>This family member does not belong to you.</p>
+<% else %>
+  Name: <%= @member.name %> <br>
+  Age: <%= @member.age %><br>
+  Events: <br>
+  <% @member.events.each do |e| %>
+    <%= link_to e.name, event_path(e) %><br>
+  <% end %><br><br>
+  <%= link_to "Edit", edit_family_member_path(@member) %> | <%= link_to "Delete", family_member_path(@member), method: :delete %>
+<% end %>
 
