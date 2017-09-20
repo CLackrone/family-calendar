@@ -1,16 +1,3 @@
-<% if @event.errors.any? %>
- <div id="error_explanation">
-  <h2><%= pluralize(@event.errors.count, "error") %> prohibited this from being saved:   </h2>
-
-  <ul>
-  <% @event.errors.full_messages.each do |msg| %>
-    <li><%= msg %></li>
-  <% end %>
-  </ul>
- </div>
-<% end %>
-
-
 <%= form_for @event do |f| %>
   <%= f.label :name %>
   <%= f.text_field :name %><br>
@@ -21,8 +8,15 @@
   <%= f.label :location %>
   <%= f.text_field :location %><br>
 
+  <%= f.text_field :category_name, list: "categories_autocomplete" %>
+  <datalist id="categories_autocomplete">
+    <% Category.all.each do |category| %>
+      <option value="<%= category.name %>">
+    <% end %>
+  </datalist>
   <%= f.submit %>
 
 <% end %>
+
 
 
