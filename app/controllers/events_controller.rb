@@ -35,7 +35,13 @@ class EventsController < ApplicationController
   end
 
   def destroy
+    if @event.destroy
+      redirect_to events_path 
+    else
+      render @event 
+    end
   end
+
 
   private
 
