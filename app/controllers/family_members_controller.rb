@@ -30,7 +30,7 @@ class FamilyMembersController < ApplicationController
     if @member.save
       redirect_to @member
     else
-      render edit_family_member_path
+      render :edit
     end
   end
 
