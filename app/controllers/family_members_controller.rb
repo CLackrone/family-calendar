@@ -26,6 +26,7 @@ class FamilyMembersController < ApplicationController
   def edit
   end
 
+
   def update
     @member.update(member_params)
     if @member.save

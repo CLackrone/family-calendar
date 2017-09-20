@@ -1,24 +1,25 @@
 <%= form_for @event do |f| %>
-  <%= f.label :name %>
+  <%= f.label :name %>:
   <%= f.text_field :name %><br>
 
-  <%= f.label :time %>
+  <%= f.label :time %>:
   <%= f.text_field :time %><br>
 
-  <%= f.label :location %>
+  <%= f.label :location %>:
   <%= f.text_field :location %><br>
 
-  <%= f.label :category %>
+  <%= f.label :category %>:
   <%= f.text_field :category_name, list: "categories_autocomplete" %>
   <datalist id="categories_autocomplete">
     <% Category.all.each do |category| %>
       <option value="<%= category.name %>">
     <% end %>
-  </datalist>
+  </datalist><br> 
+
+  <%= f.label :family_members %>:<br>
+  <%= f.collection_check_boxes :family_member_ids, current_user.family_members, :id, :name %><br>
 
   <%= f.submit %>
 
 <% end %>
-
-
 
