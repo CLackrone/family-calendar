@@ -9,7 +9,11 @@ class CategoriesController < ApplicationController
   end
 
   def index
-    @categories = Category.all
+    if params[:event_id]
+      @categories = Event.find(params[:event_id]).events
+    else
+      @categories = Category.all
+    end
   end
 
   def show
@@ -26,4 +30,3 @@ class CategoriesController < ApplicationController
   end
 
 end
-
