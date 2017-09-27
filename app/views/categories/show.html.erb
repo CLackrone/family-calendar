@@ -1,4 +1,4 @@
 <%= @category.name %><br>
 <% @category.events.each do |e| %>
-  <%= link_to e.name, event_path(e) %><br>
+  <%= link_to e.name, category_event_path(e) %><br>
 <% end %>
