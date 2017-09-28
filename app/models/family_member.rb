@@ -4,4 +4,9 @@ class FamilyMember < ApplicationRecord
   belongs_to :user
 
   validates :name, :age, presence: true
+
+  def self.busy
+    joins(:events).group("family_members.id").having("COUNT(*) >= 3").select("family_members.*")
+  end
+
 end

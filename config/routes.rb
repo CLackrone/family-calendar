@@ -2,6 +2,8 @@ Rails.application.routes.draw do
 
   root 'welcome#home'
 
+  get '/family_members/busy' => 'family_members#busy'
+
   resources :family_members
 
   resources :categories

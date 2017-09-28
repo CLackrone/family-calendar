@@ -26,6 +26,10 @@ class FamilyMembersController < ApplicationController
   def edit
   end
 
+  def busy
+    @busy = FamilyMember.busy
+  end
+
 
   def update
     @member.update(member_params)
