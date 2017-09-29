@@ -15,7 +15,7 @@ class FamilyMembersController < ApplicationController
     if @member.save
       redirect_to @member
     else 
-      redirect_to new_family_member_path
+      render :new
     end
   end
 
