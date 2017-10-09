@@ -9,15 +9,12 @@ class CategoriesController < ApplicationController
   end
 
   def index
-    if params[:event_id]
-      @categories = Event.find(params[:event_id]).events
-    else
       @categories = Category.all
-    end
   end
 
   def show
   end
+
   private
 
   def category_params

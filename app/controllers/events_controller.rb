@@ -15,12 +15,21 @@ class EventsController < ApplicationController
     end
   end
 
+
+#How can I show only the current user's events when category_id is present?
   def index
-    @events = current_user.events
+    if params[:category_id]
+      @events = Category.find(params[:category_id]).events
+    else
+      @events = current_user.events
+    end
   end
 
+#why are category and event ids being reversed here?
   def show
+
   end
+
 
   def edit
   end

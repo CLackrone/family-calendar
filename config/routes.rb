@@ -8,7 +8,7 @@ Rails.application.routes.draw do
 
   resources :categories
 
-  resources :categories do 
+  resources :categories, only: [:show] do 
     resources :events, only: [:index, :show]
   end
 

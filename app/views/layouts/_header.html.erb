@@ -5,6 +5,7 @@
 
 <% if !!current_user %>
   <%= "Signed in as #{current_user.email}" %>  | 
+  <%= link_to "Categories", categories_path %> |
   <%= link_to "Events", events_path %>  | 
   <%= link_to "Family Members", family_members_path %>  | 
   <%= link_to("Sign out", destroy_user_session_path, :method => 'delete') %>
