@@ -1,10 +1,8 @@
-<h1>Events</h1>
-
+<h3><%= @event.name.capitalize %></h3>
 
 <% if !current_user.events.include?(@event) %>
   <p>You can't view this event.</p>
 <% else %>
-  Name: <%= @event.name %><br>
   Attendees: <br>
   <% @event.family_members.each do |f| %>
     <%= link_to f.name, family_member_path(f) %><br>

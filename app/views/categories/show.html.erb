@@ -2,7 +2,7 @@
 
 <% @category.events.each do |e| %>
   <% if current_user.events.include?(e) %>
-    <%= link_to e.name, category_event_path(e) %><br>
+    <%= link_to e.name, category_event_path(@category.id, e.id) %><br>
   <% end %>
 <% end %>
 

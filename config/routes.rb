@@ -7,9 +7,9 @@ Rails.application.routes.draw do
   resources :family_members
 
   resources :categories
-
+  get '/categories/:id/events', to: 'categories#show', as: 'category_events'
   resources :categories, only: [:show] do 
-    resources :events, only: [:index, :show]
+    resources :events, only: [:show]
   end
 
   resources :events
