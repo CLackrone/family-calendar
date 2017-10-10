@@ -26,6 +26,7 @@ class EventsController < ApplicationController
   end
 
 #why are category and event ids being reversed here?
+#how can I move authorization logic from view to controller?
   def show
 
   end
