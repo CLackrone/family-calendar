@@ -4,5 +4,7 @@
   <% if current_user.events.include?(e) %>
     <%= link_to e.name, category_event_path(@category.id, e.id) %><br>
   <% end %>
-<% end %>
+<% end %><br>
+
+<%= link_to new_category_event_path(@category.id) %>
 
