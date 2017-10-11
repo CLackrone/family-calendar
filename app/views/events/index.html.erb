@@ -1,5 +1,9 @@
 <h1>Events</h1>
 
+<% if flash[:alert] %>
+  <div class="notice"><%= flash[:alert] %></div>
+<% end %>
+
 <% if @events != [] %>
   <% @events.uniq.each do |e| %>
       <%= link_to e.name, event_path(e) %><br>

@@ -27,6 +27,10 @@ class EventsController < ApplicationController
 
 #how can I move authorization logic from view to controller?
   def show
+    if !current_user.events.include?(@event)
+      flash[:alert] = "You can't view this event."
+      redirect_to events_path
+    end
   end
 
 
@@ -44,6 +48,7 @@ class EventsController < ApplicationController
 
   def destroy
     if @event.destroy
+      flash[:alert] = "Event deleted"
       redirect_to events_path 
     else
       render @event 
