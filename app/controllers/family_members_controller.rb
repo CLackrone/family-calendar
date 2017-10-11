@@ -27,7 +27,7 @@ class FamilyMembersController < ApplicationController
   end
 
   def busy
-    @busy = FamilyMember.busy
+    @busy = current_user.family_members.busy
   end
 
 
