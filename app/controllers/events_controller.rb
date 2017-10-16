@@ -4,6 +4,7 @@ class EventsController < ApplicationController
 
   def new
     @event = Event.new
+    family_member_event = @event.family_member_events.build
   end
 
   def create
@@ -15,8 +16,6 @@ class EventsController < ApplicationController
     end
   end
 
-
-#How can I show only the current user's events when category_id is present?
   def index
     if params[:category_id]
       @events = Category.find(params[:category_id]).events
@@ -25,7 +24,6 @@ class EventsController < ApplicationController
     end
   end
 
-#how can I move authorization logic from view to controller?
   def show
     if !current_user.events.include?(@event)
       flash[:alert] = "You can't view this event."
@@ -59,7 +57,7 @@ class EventsController < ApplicationController
   private
 
   def event_params
-    params.require(:event).permit(:name, :time, :location, :category_id, :category_name, family_member_ids: [])
+    params.require(:event).permit(:name, :time, :location, :category_id, :category_name, family_member_ids: [], family_member_events:[:required_items])
   end
 
   def set_event

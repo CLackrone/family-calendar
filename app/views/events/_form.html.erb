@@ -31,12 +31,26 @@
     <% end %>
   </datalist><br> 
 
-  <%= f.label :family_members %>:<br>
-  <%= f.collection_check_boxes :family_member_ids, current_user.family_members, :id, :name %><br>
+  <%= f.fields_for :family_member_events do |p| %>
+    <%= p.label :required_items %>
+    <%= p.text_field :required_items %>
+
+    <% p.fields_for :family_members do |l| %>
+      <%= l.label :family_members %>:<br>
+      <%= l.collection_check_boxes :family_member_ids, current_user.family_members, :id, :name %><br>
+    <% end %>
+  <% end %>
 
   <%= f.submit %>
 
 <% end %>
+
+
+
+
+
+
+
 
 
 
