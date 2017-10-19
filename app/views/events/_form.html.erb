@@ -32,9 +32,7 @@
   </datalist><br> 
 
 
-
-
-
+<%# This is saving the family_member_ids, but not the required_items %>
 <% current_user.family_members.each do |m| %>
 <%= fields_for :family_member_events, @event.family_member_events.build do |fme| %>
     <%= f.label :family_members %>:<br>
@@ -44,25 +42,6 @@
 <% end %><br>
 <% end %>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-  
 
   <%= f.submit %>
 
