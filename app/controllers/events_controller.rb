@@ -4,7 +4,6 @@ class EventsController < ApplicationController
 
   def new
     @event = Event.new
-    @family_member_event = @event.family_member_events.build
   end
 
   def create
@@ -57,7 +56,8 @@ class EventsController < ApplicationController
   private
 
   def event_params
-    params.require(:event).permit(:name, :time, :location, :category_id, :category_name, family_member_ids: [], family_member_events:[:required_items])
+    params.require(:event).permit(:name, :time, :location, :category_id, :category_name, 
+      :family_member_id, family_member_events_attributes:[:required_items])
   end
 
   def set_event
