@@ -31,18 +31,9 @@
     <% end %>
   </datalist><br> 
 
-
-<%# This is saving the family_member_ids, but not the required_items %>
-<% current_user.family_members.each do |m| %>
-<%= fields_for :family_member_events, @event.family_member_events.build do |fme| %>
-    <%= fme.label :family_members %>:<br>
-  <%= fme.collection_check_boxes :family_member_ids, current_user.family_members, :id, :name %><br>
-    <%= fme.label :required_items %>
-    <%= fme.text_field :required_items %><br>
-<% end %><br>
-<% end %>
-
-
+  <%= f.label :family_members %>:<br>
+  <%= f.collection_check_boxes :family_member_ids, current_user.family_members, :id, :name %><br>
+  
   <%= f.submit %>
 
 <% end %>
