@@ -5,10 +5,13 @@
 <% else %>
   Name: <%= @member.name %> <br>
   Age: <%= @member.age %><br>
+c
   Events: <br>
   <% @member.events.each do |e| %>
     <%= link_to e.name, event_path(e) %><br>
   <% end %><br><br>
+
+
   <%= link_to "Edit", edit_family_member_path(@member) %> | <%= link_to "Delete", family_member_path(@member), method: :delete %>
 <% end %>
 
