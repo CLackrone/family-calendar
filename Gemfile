@@ -40,6 +40,7 @@ gem 'jquery-rails'
 gem 'omniauth'
 gem 'omniauth-facebook'
 gem 'dotenv'
+gem 'active_model_serializers'
 
 
 group :development, :test do
