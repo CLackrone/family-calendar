@@ -1,5 +1,6 @@
 $(function() {
   var eventsArray = [];
+  // var id = parseInt($(".js-next").attr("data-id"));
 
   if ($('#eventInfo').length) {
     loadEvents();
@@ -21,9 +22,11 @@ $(function() {
       $.each(
         eventsArray, function(index, eachEvent) {
           console.log(eachEvent)
+          var eventData = "<p><a href='/events/" + eachEvent.id + "'>" 
+          + eachEvent.name + "</a></p>";
+          $('#eventInfo').append(eventData);
         }
-        )
+      )
     })
   }
-
 })
