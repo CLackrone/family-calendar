@@ -4,15 +4,6 @@
   <div class="notice"><%= flash[:alert] %></div>
 <% end %>
 
-<% if @events != [] %>
-  <% @events.uniq.each do |e| %>
-      <%= link_to e.name, event_path(e) %><br>
-  <% end %>
-<% else %>
-  <p>You have no events.</p>
-<% end %><br><br>
+<div id="eventInfo"></div>
 
 <%= link_to "Create event", new_event_path %><br><br>
-
-
-<div id="eventInfo"></div>

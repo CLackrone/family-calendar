@@ -22,8 +22,8 @@ $(function() {
       $.each(
         eventsArray, function(index, eachEvent) {
           console.log(eachEvent)
-          var eventData = "<p><a href='/events/" + eachEvent.id + "'>" 
-          + eachEvent.name + "</a></p>";
+          var eventData = "<a href='/events/" + eachEvent.id + "'>" 
+          + eachEvent.name + "</a><br>";
           $('#eventInfo').append(eventData);
         }
       )
