@@ -5,7 +5,11 @@
 <% else %>
   Name: <%= @member.name %> <br>
   Age: <%= @member.age %><br>
-c
+
+<%# I want to change this such that it renders via a JSON serialization %>
+<%# change Events: to a link that, when clicked, submits an ajax call for the @member's events %>
+<%# subsequently, each event would display information when clicked via jquery %>
+<%# The question then, is how do you format the json using html? %>
   Events: <br>
   <% @member.events.each do |e| %>
     <%= link_to e.name, event_path(e) %><br>

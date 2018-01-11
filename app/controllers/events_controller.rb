@@ -19,7 +19,11 @@ class EventsController < ApplicationController
     if params[:category_id]
       @events = Category.find(params[:category_id]).events
     else
-      @events = current_user.events
+      @events = current_user.events.uniq
+      respond_to do |format|
+        format.html {render :index}
+        format.json {render json: @events}
+      end
     end
   end
 

@@ -1,12 +1,19 @@
-//$(document).ready(function() {
-//  $('.testerbutton').on('click', function() {
-//    $.ajax({
-//      url: '/events.json',
-//      method: 'GET'
-//    })
-//  })
-//})
+$(function() {
+  var eventsArray = [];
+  // var id = parseInt($(".js-next").attr("data-id"));
 
-$(document).ready(function() {
-  $('#eventsInfo').append("This is displaying in the right place. We are going to try again.")
+  if ($('#eventInfo').length) {
+    loadEvents();
+  }
+
+  function loadEvents() {
+    $.ajax({
+      url: '/events.json',
+      method: 'GET'
+    })
+    .then(function(data) {
+      console.log(data)
+    })
+  }
+
 })
