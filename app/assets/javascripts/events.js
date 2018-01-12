@@ -25,7 +25,23 @@ $(function() {
           + eachEvent.name + "</a><br>";
           $('#eventInfo').append(eventData);
         }
-      )
+      )      
     })
   }
+
+
+//currently logging the right data, not displaying yet
+ $('#eventInfo').on('click', '.js-more', function(e) {
+    e.preventDefault();
+    var id = this.dataset.id;
+    $.get('/events/' + id + '.json', function(data) {
+      //logging the correct data
+      console.log(data)
+    })
+  })
+
+
+
+
+
 })
