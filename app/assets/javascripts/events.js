@@ -20,13 +20,11 @@ $(function() {
 
       //jQuery.each( array, callback )
       $.each(eventsArray, function(index, eachEvent) {
-  var eventData = "<div id='details-" + eachEvent.id + "'>"
-  + "<a href='#' data-id='" + eachEvent.id + "' class='js-more'>"
-  + eachEvent.name + "</a></div>";
-  $('#eventInfo').append(eventData);
-})  
-
-          
+        var eventData = "<div id='event-" + eachEvent.id + "'>"
+        + "<a href='#' data-id='" + eachEvent.id + "' class='js-more'>"
+        + eachEvent.name + "</a></div>";
+        $('#eventInfo').append(eventData);
+      })      
     })
   }
 
@@ -38,6 +36,11 @@ $(function() {
     $.get('/events/' + id + '.json', function(data) {
       //logging the correct data
       console.log(data)
+      var eventDetails = "<div id='details-" + id + "'>"
+      + "<a href='/events/" + id + "'>" + data.name + "</a>"
+      + "<p>Time: " + data.time + "</p>" 
+      + "<p>Location: " + data.location + "</p></div>";
+      $('#event-' + id).append(eventDetails);
     })
   })
 
