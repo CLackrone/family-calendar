@@ -31,6 +31,11 @@ class EventsController < ApplicationController
     if !current_user.events.include?(@event)
       flash[:alert] = "You can't view this event."
       redirect_to events_path
+    else
+      respond_to do |format|
+        format.html {render :show}
+        format.json {render json: @event}
+      end
     end
   end
 
