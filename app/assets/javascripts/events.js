@@ -40,7 +40,7 @@ $(function() {
       + "<a href='/events/" + id + "'>" + data.name + "</a>"
       + "<p>Time: " + data.time + "</p>" 
       + "<p>Location: " + data.location + "</p></div>";
-      $('#event-' + id).append(eventDetails);
+      $('#event-' + id).html(eventDetails);
     })
   })
 
