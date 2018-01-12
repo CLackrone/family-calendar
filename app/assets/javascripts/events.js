@@ -19,13 +19,14 @@ $(function() {
       eventsArray = data;
 
       //jQuery.each( array, callback )
-      $.each(
-        eventsArray, function(index, eachEvent) {
-          var eventData = "<a href='#' data-id='" + eachEvent.id + "' class='js-more'>"
-          + eachEvent.name + "</a><br>";
-          $('#eventInfo').append(eventData);
-        }
-      )      
+      $.each(eventsArray, function(index, eachEvent) {
+  var eventData = "<div id='details-" + eachEvent.id + "'>"
+  + "<a href='#' data-id='" + eachEvent.id + "' class='js-more'>"
+  + eachEvent.name + "</a></div>";
+  $('#eventInfo').append(eventData);
+})  
+
+          
     })
   }
 
