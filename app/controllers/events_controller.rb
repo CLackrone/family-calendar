@@ -39,7 +39,6 @@ class EventsController < ApplicationController
     end
   end
 
-
   def edit
   end
 
