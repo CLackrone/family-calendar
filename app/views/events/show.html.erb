@@ -14,5 +14,3 @@ Location: <%= @event.location %><br>
 Category: <%= link_to @event.category.name, category_path(@event.category) %><br><br>
 <%= link_to "Edit", edit_event_path(@event) %> | <%= link_to "Delete", event_path(@event), method: :delete %><br><br>
 
-
-<a href="#" class="js-prev">Previous</a> | <a href="#" class="js-next">Next</a>
