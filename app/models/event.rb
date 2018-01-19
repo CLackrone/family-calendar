@@ -1,5 +1,6 @@
 class Event < ApplicationRecord
   belongs_to :category
+  has_many :comments
   has_many :family_member_events
   has_many :family_members, through: :family_member_events
   accepts_nested_attributes_for :family_member_events
