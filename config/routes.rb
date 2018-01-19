@@ -1,6 +1,5 @@
 Rails.application.routes.draw do
 
-  resources :comments
   root 'welcome#home'
 
   get '/family_members/busy' => 'family_members#busy'
@@ -15,7 +14,10 @@ Rails.application.routes.draw do
     resources :events, only: [:show, :new, :edit]
   end
 
-  resources :events 
+  resources :events do 
+    resources :comments
+  end
+
 
   resources :family_member_events
 
