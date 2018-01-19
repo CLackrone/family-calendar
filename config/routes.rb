@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  resources :comments
   root 'welcome#home'
 
   get '/family_members/busy' => 'family_members#busy'
