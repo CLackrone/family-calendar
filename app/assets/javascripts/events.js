@@ -9,7 +9,6 @@ $(function() {
   // For events#index
 
   function loadEvents() {
-    //ajax call 
     $.ajax({
       url: '/events.json',
       method: 'GET'
@@ -29,13 +28,11 @@ $(function() {
   }
 
 
-//currently logging the right data, not displaying yet
- $('#eventInfo').on('click', '.js-more', function(e) {
+  //event handler to display event details 
+  $('#eventInfo').on('click', '.js-more', function(e) {
     e.preventDefault();
     var id = this.dataset.id;
     $.get('/events/' + id + '.json', function(data) {
-      //logging the correct data
-      console.log(data)
       var eventDetails = "<div id='details-" + id + "'>"
       + "<a href='/events/" + id + "'>" + data.name + "</a>"
       + "<p>Time: " + data.time + "</p>" 
@@ -43,9 +40,6 @@ $(function() {
       $('#event-' + id).html(eventDetails);
     })
   })
-
-
-
 
 
 })

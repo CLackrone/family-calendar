@@ -14,7 +14,7 @@ Rails.application.routes.draw do
     resources :events, only: [:show, :new, :edit]
   end
 
-  resources :events
+  resources :events 
 
   resources :family_member_events
 
