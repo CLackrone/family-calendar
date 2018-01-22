@@ -6,8 +6,7 @@ $(function() {
       method: 'GET',
       url: this.href
     }).done(function(data) {
-      console.log(data);
-      $(".comments_container").append(data);
+      $("div.comments_container").html(data);
     })
   })
 })
