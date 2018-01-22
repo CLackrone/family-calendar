@@ -15,3 +15,4 @@ Category: <%= link_to @event.category.name, category_path(@event.category) %><br
 <%= link_to "Edit", edit_event_path(@event) %> | <%= link_to "Delete", event_path(@event), method: :delete %><br><br>
 
 
+<%= link_to "Load Comments", event_comments_path(@event), :class => "load_comments" %>

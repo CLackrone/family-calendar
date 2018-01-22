@@ -37,3 +37,13 @@ FamilyMember.create([
   {:name => "Ada", :age => 5, :user_id => 1},
   {:name => "Eliza", :age => 2, :user_id => 1}
   ])
+
+Comment.create([
+  {:content => "This sounds fun!", :event_id => 1},
+  {:content => "Remember Marissa's coat", :event_id => 1},
+  {:content => "This sounds fun!", :event_id => 3},
+  {:content => "This sounds fun!", :event_id => 21},
+  {:content => "Buy gift on Friday", :event_id => 22},
+  {:content => "Canned food drive", :event_id => 23},
+  {:content => "White elephant", :event_id => 33}
+  ])
