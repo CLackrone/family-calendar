@@ -1,12 +1,17 @@
 $(function() {
-  //event handler for comments#index on event#show
-  $('a.load_comments').on('click', function(e) {
+
+  //loads comments on event#show
+  $('.load_comments').on('click', function(e) {
     e.preventDefault();
-    $.ajax({
-      method: 'GET',
-      url: this.href
-    }).done(function(data) {
-      $("div.comments_container").html(data);
+    //so it's this get request that needs some work
+    $.get(this.href + '.json').success(function(data) {
+      console.log(data)
+      var commentsArray = data;
+
+      $.each(commentsArray, function(index, comment) {
+        var commentData = "<li>" + comment.content + "</li>";
+        $('.comments_container').append(commentData);
+      })
     })
   })
 })

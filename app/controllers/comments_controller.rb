@@ -2,6 +2,10 @@ class CommentsController < ApplicationController
   def index
     @event = Event.find(params[:event_id])
     @comments = @event.comments
-    render 'comments/index', :layout => false
+    respond_to do |format|
+      format.html {render :index}
+      format.json {render json: @comments}
+    end
   end
 end
+
