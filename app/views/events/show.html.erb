@@ -15,6 +15,15 @@ Category: <%= link_to @event.category.name, category_path(@event.category) %><br
 <%= link_to "Load Comments", event_comments_path(@event), :class => "load_comments" %><br><br>
 <div class="comments_container"></div><br>
 
+
+
+
+<%= form_for [@event, @comment] do |f| %>
+  <%= f.text_area :content %><br>
+  <%= f.submit %>
+<% end %>
+
+
 <%= link_to "Edit", edit_event_path(@event) %> | <%= link_to "Delete", event_path(@event), method: :delete %><br><br>
 
 

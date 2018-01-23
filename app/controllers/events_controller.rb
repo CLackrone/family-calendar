@@ -32,6 +32,7 @@ class EventsController < ApplicationController
       flash[:alert] = "You can't view this event."
       redirect_to events_path
     else
+      @comment = @event.comments.build
       respond_to do |format|
         format.html {render :show}
         format.json {render json: @event}
