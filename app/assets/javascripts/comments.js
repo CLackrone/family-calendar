@@ -14,4 +14,46 @@ $(function() {
       })
     })
   })
+
+  //new comment form
+  $('#new_comment').on('submit', function(e) {
+    url = this.action
+
+    data = {
+      'authenticity_token': $("input[name='authenticity_token']").val(),
+      'comment': {
+        'content': $('#comment_content').val()
+      }
+    };
+    //logging the data I want
+    console.log(data)
+
+    //no "success"?
+    $.ajax({
+      type: 'POST', 
+      url: url,
+      data: data,
+      success: function(response) {
+        $('.comments_container').append(response)
+      }
+    })
+
+    e.preventDefault();
+  }); //end of #new_comment post request
+
+
+
 })
+
+
+//$.post( "ajax/test.html", function( data ) {
+  //$( ".result" ).html( data );
+//});
+
+//$.ajax({
+  //type: "POST",
+  //url: url,
+  //data: data,
+  //success: success,
+  //dataType: dataType
+//});

@@ -13,7 +13,7 @@ class CommentsController < ApplicationController
     @comment = @event.comments.build(comment_params)
     if 
       @comment.save
-      redirect_to @event
+      render 'comments/show', :layout => false
     else
       render 'events/show'
     end
