@@ -13,7 +13,10 @@ class CommentsController < ApplicationController
     @comment = @event.comments.build(comment_params)
     if 
       @comment.save
-      render 'comments/show', :layout => false
+      respond_to do |format|
+        format.html {render :index}
+        format.json {render json: @comment}
+      end
     else
       render 'events/show'
     end

@@ -1,11 +1,12 @@
 $(function() {
 
   //loads comments on event#show
+  //append will allow entire comments array to load repeatedly, html only loads the last comment
   $('.load_comments').on('click', function(e) {
     e.preventDefault();
+    $('.comments_container').html("")
     //so it's this get request that needs some work
     $.get(this.href + '.json').success(function(data) {
-      console.log(data)
       var commentsArray = data;
 
       $.each(commentsArray, function(index, comment) {
@@ -15,45 +16,44 @@ $(function() {
     })
   })
 
+
   //new comment form
+  //on click, state of button, disabled... what'
   $('#new_comment').on('submit', function(e) {
-    url = this.action
-
-    data = {
-      'authenticity_token': $("input[name='authenticity_token']").val(),
-      'comment': {
-        'content': $('#comment_content').val()
-      }
-    };
-    //logging the data I want
-    console.log(data)
-
-    //no "success"?
+    let datas = $(this).serialize()
+    
     $.ajax({
-      type: 'POST', 
-      url: url,
-      data: data,
+      method: 'POST',
+      url: this.action,
+      data: $(this).serialize(),
+      dataType: 'json',
+      //response is actually json now
       success: function(response) {
-        $('.comments_container').append(response)
+        $("#comment_content").val("")
+        var comment = new Comment(response)
+        comment.formatComment()
       }
     })
 
     e.preventDefault();
-  }); //end of #new_comment post request
+
+  })
 
 
 
 })
 
 
-//$.post( "ajax/test.html", function( data ) {
-  //$( ".result" ).html( data );
-//});
+function Comment(data) {
+  this.id = data.id
+  this.content = data.content
+  this.event_id = data.event_id
+}
 
-//$.ajax({
-  //type: "POST",
-  //url: url,
-  //data: data,
-  //success: success,
-  //dataType: dataType
-//});
+
+  
+Comment.prototype.formatContent = function() {
+  var html = "";
+  html += "<li>" + this.content + "</li>";
+  $(".comments_container").append(html)
+}

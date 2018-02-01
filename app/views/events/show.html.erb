@@ -16,9 +16,8 @@ Category: <%= link_to @event.category.name, category_path(@event.category) %><br
 <div class="comments_container"></div><br>
 
 
-
-
-<%= form_for [@event, @comment] do |f| %>
+<%#= form_for (@comment, :url => event_comments_path(@event)) do |f| %>
+<%= form_for ([@event, @comment]) do |f| %>
   <%= f.text_area :content %><br>
   <%= f.submit %>
 <% end %>
