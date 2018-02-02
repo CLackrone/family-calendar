@@ -23,7 +23,6 @@ $(function() {
       url: this.action,
       data: $(this).serialize(),
       dataType: 'json',
-      //response is actually json now
       success: function(response) {
         $("#comment_content").val("")
         var comment = new Comment(response)
