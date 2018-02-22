@@ -7,7 +7,14 @@ $(function() {
     $.get(this.href + '.json').success(function(data) {
       var commentsArray = data;
 
-      $.each(commentsArray, function(index, comment) {
+      const newArray = commentsArray.filter(function(comment) {
+        return comment.content.length >= 5
+      })
+
+
+      //filter(function(arg) { return true})
+
+      $.each(newArray, function(index, comment) {
         var commentData = "<li>" + comment.content + "</li>";
         $('.comments_container').append(commentData);
       })
@@ -38,7 +45,7 @@ $(function() {
 function Comment(data) {
   this.id = data.id
   this.content = data.content
-  this.event_id = data.event_id
+  this.eventId = data.event_id
 }
  
 Comment.prototype.formatContent = function() {
@@ -46,3 +53,18 @@ Comment.prototype.formatContent = function() {
   html += "<li>" + this.content + "</li>";
   $(".comments_container").append(html)
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
