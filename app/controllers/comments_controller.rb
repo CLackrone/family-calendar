@@ -1,5 +1,6 @@
 class CommentsController < ApplicationController
   before_action :set_event
+  before_action :set_comment, only: [:show, :destroy]
 
   def index
     @comments = @event.comments
@@ -22,6 +23,18 @@ class CommentsController < ApplicationController
     end
   end
 
+  def show
+
+  end
+
+  def destroy
+    if @comment.destroy
+      flash[:alert] = "Comment deleted"
+      redirect_to event_path(@event)
+    else
+      render @event
+  end
+
 
 
   private
@@ -30,11 +43,16 @@ class CommentsController < ApplicationController
     @event = Event.find(params[:event_id])
   end
 
+  def set_comment
+    @comment = Comment.find_by(id: params[:id])
+  end
+
   def comment_params
     params.require(:comment).permit(:content, :event_id)
   end
 
   
 end
+
 
 
