@@ -5,7 +5,7 @@ $(function() {
     e.preventDefault();
     $('.comments_container').html("")
     $.get(this.href + '.json').success(function(data) {
-      var commentsArray = data;
+      const commentsArray = data;
 
       const newArray = commentsArray.filter(function(comment) {
         return comment.content.length >= 5
@@ -15,7 +15,7 @@ $(function() {
       //filter(function(arg) { return true})
 
       $.each(newArray, function(index, comment) {
-        var commentData = "<li>" + comment.content + "</li>";
+        const commentData = "<li>" + comment.content + "</li>";
         $('.comments_container').append(commentData);
       })
     })
@@ -23,7 +23,7 @@ $(function() {
 
   //new comment form
   $('#new_comment').on('submit', function(e) {
-    let datas = $(this).serialize()
+    const datas = $(this).serialize()
     
     $.ajax({
       method: 'POST',
@@ -32,7 +32,7 @@ $(function() {
       dataType: 'json',
       success: function(response) {
         $("#comment_content").val("")
-        var comment = new Comment(response)
+        const comment = new Comment(response)
         comment.formatContent()
       }
     })
@@ -49,7 +49,7 @@ function Comment(data) {
 }
  
 Comment.prototype.formatContent = function() {
-  var html = "";
+  let html = "";
   html += "<li>" + this.content + "</li>";
   $(".comments_container").append(html)
 }
