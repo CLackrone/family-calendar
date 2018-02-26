@@ -13,9 +13,8 @@ $(function() {
 
 
       $.each(newArray, function(index, comment) {
-        console.log(comment)
         const commentData = "<li>" + comment.content + 
-        "</li><br><a rel='nofollow' data-method='delete' href='/events/" + 
+        "</li><a rel='nofollow' data-method='delete' href='/events/" + 
         comment.event_id + 
         "/comment/" + comment.id + "'>Delete</a>";
         $('.comments_container').append(commentData);
@@ -55,7 +54,9 @@ function Comment(data) {
  
 Comment.prototype.formatContent = function() {
   let html = "";
-  html += "<li>" + this.content + "</li>";
+  html += "<li>" + this.content + "</li><a rel='nofollow' data-method='delete' href='/events/" + 
+        this.eventId + 
+        "/comment/" + this.id + "'>Delete</a>";
   $(".comments_container").append(html)
 }
 
