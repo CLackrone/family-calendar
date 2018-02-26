@@ -12,10 +12,12 @@ $(function() {
       })
 
 
-      //filter(function(arg) { return true})
-
       $.each(newArray, function(index, comment) {
-        const commentData = "<li>" + comment.content + "</li>";
+        console.log(comment)
+        const commentData = "<li>" + comment.content + 
+        "</li><br><a rel='nofollow' data-method='delete' href='/events/" + 
+        comment.event_id + 
+        "/comment/" + comment.id + "'>Delete</a>";
         $('.comments_container').append(commentData);
       })
     })
@@ -36,6 +38,9 @@ $(function() {
         comment.formatContent()
       }
     })
+
+    $(':submit').removeAttr('data-disable-with');
+$(':submit').removeAttr('disabled');
 
     e.preventDefault();
   })

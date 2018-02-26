@@ -24,7 +24,6 @@ class CommentsController < ApplicationController
   end
 
   def show
-
   end
 
   def destroy
@@ -33,6 +32,7 @@ class CommentsController < ApplicationController
       redirect_to event_path(@event)
     else
       render @event
+    end
   end
 
 
@@ -51,8 +51,4 @@ class CommentsController < ApplicationController
     params.require(:comment).permit(:content, :event_id)
   end
 
-  
 end
-
-
-
