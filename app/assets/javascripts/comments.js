@@ -14,9 +14,9 @@ $(function() {
 
       $.each(newArray, function(index, comment) {
         const commentData = "<li>" + comment.content + 
-        "</li><a rel='nofollow' data-method='delete' href='/events/" + 
+        "</li><a rel='nofollow' class='comment_delete' data-method='delete' href='/events/" + 
         comment.event_id + 
-        "/comment/" + comment.id + "'>Delete</a>";
+        "/comments/" + comment.id + "'>Delete</a>";
         $('.comments_container').append(commentData);
       })
     })
@@ -39,12 +39,27 @@ $(function() {
     })
 
     $(':submit').removeAttr('data-disable-with');
-$(':submit').removeAttr('disabled');
+    $(':submit').removeAttr('disabled');
 
     e.preventDefault();
   })
 
+//delete comment
+//event listener is just not working
+//console.log working, but default not being prevented
+
+  $('.comments_container').on('click', '.comment_delete', function(e) {
+  console.log(e);
+  $('li')
+  e.preventDefault();
+  e.stopPropagation();
 })
+
+
+
+})
+
+
 
 function Comment(data) {
   this.id = data.id
@@ -54,9 +69,9 @@ function Comment(data) {
  
 Comment.prototype.formatContent = function() {
   let html = "";
-  html += "<li>" + this.content + "</li><a rel='nofollow' data-method='delete' href='/events/" + 
+  html += "<li>" + this.content + "</li><a rel='nofollow' class='comment_delete' data-method='delete' href='/events/" + 
         this.eventId + 
-        "/comment/" + this.id + "'>Delete</a>";
+        "/comments/" + this.id + "'>Delete</a>";
   $(".comments_container").append(html)
 }
 
