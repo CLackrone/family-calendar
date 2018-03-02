@@ -45,19 +45,25 @@ $(function() {
   })
 
 //delete comment
-//event listener is just not working
-//console.log working, but default not being prevented
 
   $('.comments_container').on('click', '.comment_delete', function(e) {
-  console.log(e);
-  $('li')
-  e.preventDefault();
-  e.stopPropagation();
+    console.log(this.href)
+     $.ajax({
+      url: this.href,
+      type: 'DELETE',
+      success: function() {
+        connsole.log('success!')
+        $('.comment_delete').remove();
+      }
+    })
+   
+    e.preventDefault();
+    e.stopPropagation();
+  })
+
+
 })
 
-
-
-})
 
 
 

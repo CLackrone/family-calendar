@@ -27,13 +27,21 @@ class CommentsController < ApplicationController
   end
 
   def destroy
-    if @comment.destroy
-      flash[:alert] = "Comment deleted"
-      redirect_to event_path(@event)
-    else
-      render @event
+    @comment.destroy
+    
+    respond_to do |format|
+      format.html { redirect_to event_path(@event)}
+      format.json
     end
   end
+  #def destroy
+   # if @comment.destroy
+    #  flash[:alert] = "Comment deleted"
+     # redirect_to event_path(@event)
+    #else
+     # render @event
+    #end
+  #end
 
 
 
