@@ -44,67 +44,32 @@ $(function() {
 
     e.preventDefault();
   })
-
-
-  //delete comment
-
-  // $('.comments_container').on('click', '.comment_delete', function(e) {
-  //   $.ajax({
-  //     url: this.href,
-  //     type: 'DELETE'    
-  //   }).then(function(data) {
-  //     console.log('random string')
-  //     $('.comment_delete').remove()
-  //   })
-
   
   function attachCommentListener() {
-  $('.comment_delete').on('click', function(e) {
+    $('.comment_delete').on('click', function(e) {
 
-    e.preventDefault();
-    e.stopPropagation();
+      e.preventDefault();
+      e.stopPropagation();
 
-    const urlToDelete = $(this)
+      const urlToDelete = $(this)
 
-    $.ajax({
-      type: 'DELETE',
-      url: $(urlToDelete).attr('href'),
-      dataType: 'json',
-      success: function() {
-
-        console.log(urlToDelete)
-        //removes delete button from just current li
-        $(urlToDelete).parent().remove();
-        //removes delete button
-        //$('.comment_delete').remove()
-      },
-      error: function(err) {
-        debugger
-        console.log ("url = " + urlToDelete)
-        console.log("got an error - " + err)
-      }
-  
+      $.ajax({
+        type: 'DELETE',
+        url: $(urlToDelete).attr('href'),
+        dataType: 'json',
+        success: function() {
+          $(urlToDelete).parent().remove();
+        },
+        error: function(err) {
+          debugger
+          console.log ("url = " + urlToDelete)
+          console.log("got an error - " + err)
+        }
+      })
     })
-
-    
-  })
-}
-
-
-
+  }
 
 })
-
-
-
-
-
-
-
-
-
-
-
 
 
 function Comment(data) {
@@ -120,18 +85,5 @@ Comment.prototype.formatContent = function() {
         "/comments/" + this.id + "'>Delete</a></li>";
   $(".comments_container").append(html)
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
