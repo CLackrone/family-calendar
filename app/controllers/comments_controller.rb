@@ -28,10 +28,10 @@ class CommentsController < ApplicationController
 
   def destroy
     @comment.destroy
-    
+
     respond_to do |format|
       format.html { redirect_to event_path(@event)}
-      format.json
+      format.json { render json: @comment }
     end
   end
   #def destroy

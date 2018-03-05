@@ -14,11 +14,12 @@ $(function() {
 
       $.each(newArray, function(index, comment) {
         const commentData = "<li>" + comment.content + 
-        "</li><a rel='nofollow' class='comment_delete' data-method='delete' href='/events/" + 
+        "<a rel='nofollow' class='comment_delete' data-method='delete' href='/events/" + 
         comment.event_id + 
-        "/comments/" + comment.id + "'>Delete</a>";
+        "/comments/" + comment.id + "'>Delete</a></li>";
         $('.comments_container').append(commentData);
       })
+      attachCommentListener();
     })
   })
 
@@ -44,25 +45,64 @@ $(function() {
     e.preventDefault();
   })
 
-//delete comment
 
-  $('.comments_container').on('click', '.comment_delete', function(e) {
-    console.log(this.href)
-     $.ajax({
-      url: this.href,
-      type: 'DELETE',
-      success: function() {
-        connsole.log('success!')
-        $('.comment_delete').remove();
-      }
-    })
-   
+  //delete comment
+
+  // $('.comments_container').on('click', '.comment_delete', function(e) {
+  //   $.ajax({
+  //     url: this.href,
+  //     type: 'DELETE'    
+  //   }).then(function(data) {
+  //     console.log('random string')
+  //     $('.comment_delete').remove()
+  //   })
+
+  
+  function attachCommentListener() {
+  $('.comment_delete').on('click', function(e) {
+
     e.preventDefault();
     e.stopPropagation();
+
+    const urlToDelete = $(this)
+
+    $.ajax({
+      type: 'DELETE',
+      url: $(urlToDelete).attr('href'),
+      dataType: 'json',
+      success: function() {
+
+        console.log(urlToDelete)
+        //removes delete button from just current li
+        $(urlToDelete).parent().remove();
+        //removes delete button
+        //$('.comment_delete').remove()
+      },
+      error: function(err) {
+        debugger
+        console.log ("url = " + urlToDelete)
+        console.log("got an error - " + err)
+      }
+  
+    })
+
+    
   })
+}
+
+
 
 
 })
+
+
+
+
+
+
+
+
+
 
 
 
@@ -75,9 +115,9 @@ function Comment(data) {
  
 Comment.prototype.formatContent = function() {
   let html = "";
-  html += "<li>" + this.content + "</li><a rel='nofollow' class='comment_delete' data-method='delete' href='/events/" + 
+  html += "<li>" + this.content + "<a rel='nofollow' class='comment_delete' data-method='delete' href='/events/" + 
         this.eventId + 
-        "/comments/" + this.id + "'>Delete</a>";
+        "/comments/" + this.id + "'>Delete</a></li>";
   $(".comments_container").append(html)
 }
 
